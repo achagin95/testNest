@@ -7,6 +7,7 @@ import { UsersService } from './users/users.service';
 import { UsersModule } from './users/users.module';
 import { ConfigModule } from "@nestjs/config";
 import { User } from "./users/users.model";
+import { AuthModule } from './auth/auth.module';
 
 @Module({
     controllers: [],
@@ -26,6 +27,7 @@ import { User } from "./users/users.model";
             autoLoadModels: true,
         }),
         UsersModule,
+        AuthModule,
     ],
 })
 export class AppModule { }
