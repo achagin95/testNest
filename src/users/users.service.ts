@@ -22,4 +22,20 @@ export class UsersService {
         const user = await this.userRepository.findOne({where: {email}})
         return user
     }
+
+    async getUserById(id: number) {
+        const user = await this.userRepository.findByPk(id)
+        return user
+    }
+
+    async getUser() {
+        try {
+            // console.log(request)
+            // const authHeader = request.headers.authorization
+            // const bearer = authHeader.split(' ')[0]
+            // const token = authHeader.split(' ')[1]
+        } catch (error) {
+            
+        }
+    }
 }
