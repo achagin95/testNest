@@ -41,7 +41,12 @@ export class AuthService {
     }
 
     private async validateUser(userDto: CreateUserDto) {
+        console.log(userDto)
         const user = await this.userService.getUserByEmail(userDto.email)
+        console.log(user)
+        if(!user) {
+            throw new HttpException("Uncorrect email", HttpStatus.NOT_FOUND)
+        }
         const checkPassword = await bcrypt.compare(userDto.password, user.password)
         if (user && checkPassword) {
             return user

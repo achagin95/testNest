@@ -22,6 +22,9 @@ export class RolesGuard2 implements CanActivate {
             }
             const request = context.switchToHttp().getRequest()
             const authHeader = request.headers.authorization
+            if (!authHeader) {
+                throw new UnauthorizedException({message: 'Unauthorized user'})
+            }
             const bearer = authHeader.split(' ')[0]
             const token = authHeader.split(' ')[1]
 
@@ -34,8 +37,8 @@ export class RolesGuard2 implements CanActivate {
             return requiredRoles.includes(user.role)
 
         } catch (error) {
-            console.log(error)
-            throw new UnauthorizedException({message: error.response.message})
+
+            throw error
         }
     }
 

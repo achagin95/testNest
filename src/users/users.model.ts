@@ -21,7 +21,7 @@ export class User extends Model<User, UserCreationAttr> {
     @Column( {type: DataType.STRING, allowNull: false} )
     password: string
 
-    @ApiProperty({example: false, description: "admin role. I could make numbers (0-user, 1-admin)"})
+    @ApiProperty({example: "user", description: "admin role. I could make numbers (0-user, 1-admin)"})
     @Column( {type: DataType.STRING, defaultValue: "user"} )
     admin: string
 }
